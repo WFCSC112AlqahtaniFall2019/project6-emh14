@@ -7,25 +7,30 @@
 
 #include "Node.h"
 #include <iostream>
-
-using namespace std;
+using namespace std;
 
 class LinkList {
 
 public:
+    //Constructor
+    LinkList();
+
     // The Big Three
 
     //1. Destructor
-    LinkList();
-
-    //2. Destructor
     ~ LinkList();
 
-    //3. Copy constructor
+    //2. Copy constructor
     LinkList(const LinkList &list);
 
-    //Copy Assignment Operator
+    //3. Copy Assignment Operator
     LinkList & operator=(const LinkList &rhs);
+
+    //Add an item to to the list
+    void append(int item);
+
+    //Remove an item from the list
+    bool remove(int item);
 
 private:
     Node *head; // start of the list
