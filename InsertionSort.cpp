@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cassert>
 #include "BinaryInsertionSort.h"
 #include "Node.h"
 using namespace std;
@@ -7,6 +8,7 @@ using namespace std;
 int main() {
 
     int seed, length;
+    cout << "Insert seed and length: " << endl;
     cin >> seed >> length;
     srand(seed);
 
