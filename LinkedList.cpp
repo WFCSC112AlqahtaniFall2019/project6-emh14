@@ -19,9 +19,8 @@ LinkList::LinkList() {
 LinkList::~LinkList() {
     cout << "Destructor Called" << endl;
 
-    //Create two nodes
-    Node *current = head; //one to track where you are in the list
-    Node *next; //one to track where you are going
+    current = head; //start at the front of the list
+    Node *next; // Create new node to  to track where you are going
 
     while (current != nullptr) { //while current is not the tail
         next = current->next; //starting from the first node
@@ -52,13 +51,13 @@ void LinkList::append(int item) {
     }
         // case 2: Adding to an existing list
     else {
-        Node *cursor = head; // Create a new node
+        current = head; // Create a new node
 
         // Find end of the list
-        while (cursor->next != nullptr) {
-            cursor = cursor->next;
+        while (current->next != nullptr) {
+            current = current->next;
         }
-        cursor->next = new Node(item); // Have last node point to the new node
+        current->next = new Node(item); // Have last node point to the new node
     }
 }
 
@@ -66,8 +65,8 @@ void LinkList::append(int item) {
 bool LinkList::remove(int item) {
 
     //Create two nodes
-    Node *current = head; //one to track where you are in the list
-    Node *previous; //one to track where you have been
+    current = head; //starting from the first node
+    Node *previous; // Create new node to  to track where you have been
 
 
     // case 1: If the list is empty, do nothing
@@ -102,8 +101,8 @@ bool LinkList::remove(int item) {
 }
 
 //Determine if item is in the list
-int LinkList::isItem(int item) const {
-    Node *cursor = head; // create a pointer to traverse the list
+bool LinkList::isItem(int item) const {
+    Node *cursor = head; // create a pointer to traverse the list for the constant function
     while (cursor != nullptr) { //while current is not the tail
         if (cursor->value == item) { //if the item is found, hooray
             return true;
@@ -111,6 +110,19 @@ int LinkList::isItem(int item) const {
         cursor = cursor->next; //move to the next
     }
     return false; //else the item is not there
+}
+
+//Print the linked list
+void LinkList::printList() const {
+    Node *cursor = head; // create a pointer to traverse the list for the constant function
+    if (!cursor) { //check if the list is empty
+        cout << "The list is empty!" << endl;
+    } else {
+        while (cursor) {
+            cout << cursor->value << endl; //output the node
+            cursor = cursor->next; //move to the next
+        }
+    }
 }
 
 

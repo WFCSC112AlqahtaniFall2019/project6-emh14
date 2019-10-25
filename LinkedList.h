@@ -35,12 +35,16 @@ public:
     //Determine if item is in the list
     bool isItem(int item) const;
 
+    //Print the linked list
+    void printList() const;
+
 
     //Insertion Sort
 
 
 private:
     Node *head; // start of the list
+    Node *current; //current position of the list
 };
 
 
