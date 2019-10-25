@@ -26,11 +26,17 @@ public:
     //3. Copy Assignment Operator
     LinkList & operator=(const LinkList &rhs);
 
-    //Add an item to to the list
+    //Add an item to the list
     void append(int item);
 
     //Remove an item from the list
     bool remove(int item);
+
+    //Traverse through the list
+    int traverse(int item);
+
+    //Insertion Sort
+
 
 private:
     Node *head; // start of the list
