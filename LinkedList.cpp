@@ -23,7 +23,7 @@ LinkList::~LinkList() {
     Node *current = head; //one to track where you are in the list
     Node *next; //one to track where you are going
 
-    while (current != NULL) { //while current is not the tail
+    while (current != nullptr) { //while current is not the tail
         next = current->next; //starting from the first node
         delete current; //delete the node
         current = next; // then move to the next
@@ -101,6 +101,16 @@ bool LinkList::remove(int item) {
     return false;
 }
 
-//Traverse through the list
-int LinkList::traverse(int item) {}
+//Determine if item is in the list
+int LinkList::isItem(int item) const {
+    Node *cursor = head; // create a pointer to traverse the list
+    while (cursor != nullptr) { //while current is not the tail
+        if (cursor->value == item) { //if the item is found, hooray
+            return true;
+        }
+        cursor = cursor->next; //move to the next
+    }
+    return false; //else the item is not there
+}
+
 

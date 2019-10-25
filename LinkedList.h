@@ -32,8 +32,9 @@ public:
     //Remove an item from the list
     bool remove(int item);
 
-    //Traverse through the list
-    int traverse(int item);
+    //Determine if item is in the list
+    bool isItem(int item) const;
+
 
     //Insertion Sort
 
