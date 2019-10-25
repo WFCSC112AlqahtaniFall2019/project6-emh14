@@ -41,7 +41,22 @@ LinkList::LinkList(const LinkList &list) {
     if (list.head == nullptr){
         head = nullptr;
     }
+    // case 2: list contains items to copy
+    else{
+        head = new Node(list.head->value); //create new memory in the heap
+        current = head; //start from the first node
 
+        //Create new nodes
+        Node *headList = list.head; //one to copy head
+        Node *currentList  = list.current; //one to copy current
+
+        //while current of the copied list has not reached the end
+        while(currentList->next != nullptr){
+            current->next = new Node (currentList->next->value); //make deep copies
+            currentList = currentList->next;
+            current = current->next;
+        }
+    }
 }
 
 //Copy Assignment Operator
