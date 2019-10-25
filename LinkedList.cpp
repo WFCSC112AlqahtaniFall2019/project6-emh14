@@ -13,6 +13,9 @@ using namespace std;
 LinkList::LinkList() {
     cout << "Constructor Called" << endl;
 
+    //Initialize list as empty
+    head = nullptr;
+    current = head;
 }
 
 //Destructor
@@ -31,14 +34,18 @@ LinkList::~LinkList() {
 
 
 //Copy constructor
-LinkList::LinkList(
-        const LinkList &list) {
+LinkList::LinkList(const LinkList &list) {
     cout << "Copy Constructor Called" << endl;
+
+    // case 1: if the list is empty
+    if (list.head == nullptr){
+        head = nullptr;
+    }
 
 }
 
 //Copy Assignment Operator
-LinkList &LinkList::operator=(const LinkList &rhs) {
+LinkList &LinkList::operator=(const LinkList &copyList) {
     cout << "Copy Assignment Operator Called" << endl;
 
 }

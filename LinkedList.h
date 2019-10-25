@@ -24,7 +24,7 @@ public:
     LinkList(const LinkList &list);
 
     //3. Copy Assignment Operator
-    LinkList & operator=(const LinkList &rhs);
+    LinkList & operator=(const LinkList &copyList);
 
     //Add an item to the list
     void append(int item);
