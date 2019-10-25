@@ -19,11 +19,21 @@ LinkList::LinkList() {
 LinkList::~LinkList() {
     cout << "Destructor Called" << endl;
 
+    //Create two nodes
+    Node *current = head; //one to track where you are in the list
+    Node *next; //one to track where you are going
+
+    while (current != NULL) { //while current is not the tail
+        next = current->next; //starting from the first node
+        delete current; //delete the node
+        current = next; // then move to the next
+    }
 }
 
 
 //Copy constructor
-LinkList::LinkList(const LinkList &list) {
+LinkList::LinkList(
+        const LinkList &list) {
     cout << "Copy Constructor Called" << endl;
 
 }
@@ -40,7 +50,7 @@ void LinkList::append(int item) {
     if (head == nullptr) {
         head = new Node(item); //Update the head
     }
-    // case 2: Adding to an existing list
+        // case 2: Adding to an existing list
     else {
         Node *cursor = head; // Create a new node
 
