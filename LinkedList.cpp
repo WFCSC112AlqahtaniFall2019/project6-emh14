@@ -53,8 +53,8 @@ LinkList::LinkList(const LinkList &list) {
         //while current of the copied list has not reached the end
         while(currentList->next != nullptr){
             current->next = new Node (currentList->next->value); //make deep copies
-            currentList = currentList->next;
-            current = current->next;
+            currentList = currentList->next; // move to next in the copied list
+            current = current->next; // move to next in the original list
         }
     }
 }
@@ -63,6 +63,13 @@ LinkList::LinkList(const LinkList &list) {
 LinkList &LinkList::operator=(const LinkList &copyList) {
     cout << "Copy Assignment Operator Called" << endl;
 
+    LinkList temp(copyList); //create new object
+
+    //built-in swap for private members
+    swap(temp.head, head);
+    swap (temp.current, current);
+
+    return *this;
 }
 
 //Add an item to the list
