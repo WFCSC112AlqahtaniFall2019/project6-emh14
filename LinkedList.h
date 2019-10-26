@@ -44,7 +44,7 @@ public:
 
 private:
     Node *head; // start of the list
-    Node *current; //current position of the list
+    //Node *current; // create node for current position of the list
 };
 
 

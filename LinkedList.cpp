@@ -15,12 +15,12 @@ LinkList::LinkList() {
 
     //Initialize list as empty
     head = nullptr;
-    current = head;
 }
 
 //Destructor
 LinkList::~LinkList() {
     cout << "Destructor Called" << endl;
+    Node *current; // create node for current position of the list
 
     current = head; //start at the front of the list
     Node *next; // Create new node to  to track where you are going
@@ -32,27 +32,26 @@ LinkList::~LinkList() {
     }
 }
 
-
 //Copy constructor
 LinkList::LinkList(const LinkList &list) {
     cout << "Copy Constructor Called" << endl;
+    Node *current; // create node for current position of the list
 
     // case 1: if the list is empty
-    if (list.head == nullptr){
+    if (list.head == nullptr) {
         head = nullptr;
     }
-    // case 2: list contains items to copy
-    else{
+        // case 2: list contains items to copy
+    else {
         head = new Node(list.head->value); //create new memory in the heap
         current = head; //start from the first node
 
-        //Create new nodes
-        Node *headList = list.head; //one to copy head
-        Node *currentList  = list.current; //one to copy current
+
+        Node *currentList = current;  //Create new node to copy current
 
         //while current of the copied list has not reached the end
-        while(currentList->next != nullptr){
-            current->next = new Node (currentList->next->value); //make deep copies
+        while (currentList != nullptr) {
+            current->next = new Node(currentList->next->value); //make deep copies
             currentList = currentList->next; // move to next in the copied list
             current = current->next; // move to next in the original list
         }
@@ -62,18 +61,20 @@ LinkList::LinkList(const LinkList &list) {
 //Copy Assignment Operator
 LinkList &LinkList::operator=(const LinkList &copyList) {
     cout << "Copy Assignment Operator Called" << endl;
+    Node *current; // create node for current position of the list
 
     LinkList temp(copyList); //create new object
 
-    //built-in swap for private members
+    //built-in swap for private member
     swap(temp.head, head);
-    swap (temp.current, current);
 
     return *this;
 }
 
 //Add an item to the list
 void LinkList::append(int item) {
+    Node *current; // create node for current position of the list
+
     // case 1: Adding to an empty list
     if (head == nullptr) {
         head = new Node(item); //Update the head
@@ -92,6 +93,7 @@ void LinkList::append(int item) {
 
 //Remove an item to the list
 bool LinkList::remove(int item) {
+    Node *current; // create node for current position of the list
 
     //Create two nodes
     current = head; //starting from the first node
