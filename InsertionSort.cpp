@@ -15,10 +15,15 @@ int main() {
     srand(seed);
 
     vector<int> v(length);
+    LinkList List; //create new object
+    Node *item; //create the item to insert into the list
 
-    // generate vector of random integers
+
+    // generate vector and linked list of random integers
     for (int i = 0; i < v.size(); i++) {
-        v[i] = rand() % 100;
+        int randValue = rand() % 100; //keep the random value the same for the vector and list
+        v[i] = randValue;
+        List.append(randValue);
     }
 
     // print out unsorted vector
@@ -41,16 +46,18 @@ int main() {
     for (int i = 0; i < v.size(); i++) {
         cout << v[i] << "\t";
     }
-
-    // FINISH ME
-    LinkList List; //create new object
-    Node *item; //create the item to insert into the list
+    cout << endl;
 
     // print out unsorted linked list
+    cout << "Unsorted Linked List: " << endl;
     List.printList();
+    cout << endl;
+
     // insertionSort
-    List.LLinsertionSort(item);
+    //List.LLinsertionSort();
+
     //print out sorted linked list
+    cout << "Sorted Linked List: " << endl;
     List.printList();
 
 }

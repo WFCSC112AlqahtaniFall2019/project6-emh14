@@ -39,7 +39,7 @@ public:
     void printList() const;
 
     //Insertion Sort
-    void LLinsertionSort(Node *node);
+    void LLinsertionSort();
 
 
 private:

@@ -11,7 +11,7 @@ using namespace std;
 
 //Constructor
 LinkList::LinkList() {
-    cout << "Constructor Called" << endl;
+    //cout << "Constructor Called" << endl;
 
     //Initialize list as empty
     head = nullptr;
@@ -19,7 +19,7 @@ LinkList::LinkList() {
 
 //Destructor
 LinkList::~LinkList() {
-    cout << "Destructor Called" << endl;
+    //cout << "Destructor Called" << endl;
     Node *current; // create node for current position of the list
 
     current = head; //start at the front of the list
@@ -34,7 +34,7 @@ LinkList::~LinkList() {
 
 //Copy constructor
 LinkList::LinkList(const LinkList &list) {
-    cout << "Copy Constructor Called" << endl;
+    //cout << "Copy Constructor Called" << endl;
     Node *current; // create node for current position of the list
 
     // case 1: if the list is empty
@@ -60,7 +60,7 @@ LinkList::LinkList(const LinkList &list) {
 
 //Copy Assignment Operator
 LinkList &LinkList::operator=(const LinkList &copyList) {
-    cout << "Copy Assignment Operator Called" << endl;
+    //cout << "Copy Assignment Operator Called" << endl;
     Node *current; // create node for current position of the list
 
     LinkList temp(copyList); //create new object
@@ -150,16 +150,62 @@ void LinkList::printList() const {
         cout << "The list is empty!" << endl;
     } else {
         while (cursor) {
-            cout << cursor->value << endl; //output the node
+            cout << cursor->value << "\t"; //output the node
             cursor = cursor->next; //move to the next
         }
     }
 }
 
 //Insertion Sort
-void LinkList::LLinsertionSort(Node *node){
+void LinkList::LLinsertionSort() { //takes in head and along with it, the rest of the linked list
 
+    Node *current; // create node for current position of the list
+    Node *temp; // create temporary node
+    Node *previous; // create new node to  to track where you have been
+    Node *traverser; //create new node to find certain places in the list
 
+    //case 1: Empty List- there is nothing to sort
+    if (head == nullptr) {
+        return;
+    }
+
+    //case 2: Linked List of one element is already sorted
+    if (head->next == nullptr) {
+        return;
+    }
+
+    //case 3: Linked List of multiple elements
+    int i = 1; //variable marks the current position in the list
+    int length = 0;
+
+    current = head; //starting from the top of the list
+    //traversing the list to determine its length
+    while (current) {
+        length++;
+        current = current->next;
+    }
+
+    current = head->next; //starting from the first element beyond head
+
+    //sort the list
+    while (current) {
+        current = head; //start at the front of the list
+        temp = current;
+
+        current = head;
+
+        for (int j = 0; j < i; j++) {
+
+            previous->next = current->next;
+            current->next = nullptr;
+        }
+    }
+
+    current = temp;
+    //update position in the list
+    previous = current;
+    current = current->next;
+    i++;
 }
 
 
