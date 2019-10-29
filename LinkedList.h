@@ -38,8 +38,8 @@ public:
     //Print the linked list
     void printList() const;
 
-
     //Insertion Sort
+    void LLinsertionSort(Node *node);
 
 
 private:

@@ -156,4 +156,10 @@ void LinkList::printList() const {
     }
 }
 
+//Insertion Sort
+void LinkList::LLinsertionSort(Node *node){
+
+
+}
+
 
