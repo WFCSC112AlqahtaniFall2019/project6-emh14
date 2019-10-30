@@ -179,7 +179,7 @@ void LinkList::LLinsertionSort() { //takes in head and along with it, the rest o
     current = head->next; //starting from the first element beyond head
     previous = head; //previous is one before current
 
-    while (end != nullptr) { //do until the whole list is sorted
+    /*outer while loop*/while (end != nullptr) { //do until the whole list is sorted
         // create node to track the next element in list
         Node *next;
         next = current->next;
@@ -190,12 +190,10 @@ void LinkList::LLinsertionSort() { //takes in head and along with it, the rest o
             //move everything down the line in order
             previous = previous->next;
             current = next;
-            next = next->next;
-            end = end->next;
         }
 
-            //case 2: two values next to each other need to be rearranged
-        else { // the values are not in the correct order
+        //case 2: two values next to each other need to be rearranged
+        else {
 
             //case 2.1: the value is less than the head -- head needs to be reassigned
             if (head->value > current->value) {
@@ -208,14 +206,14 @@ void LinkList::LLinsertionSort() { //takes in head and along with it, the rest o
             else {
                 end = head; //the list is not sorted
 
-                previous->next = current->next; //move link to skip over current
+                previous->next = next; //move link to skip over current
 
                 //move current to the first location that is not sorted
-                current->next = end->next;
+                next = end->next;
                 end->next = current;
 
                 //check that the list is not sorted and the nodes are still in the correct order
-                while (end->next != nullptr && (end->next->value < current->value)) {
+                /*inner while loop*/while (end->next != nullptr && (end->next->value < current->value)) {
                     end = end->next; //move end along because the list is sorted
                 }
             }
