@@ -54,7 +54,7 @@ int main() {
     cout << endl;
 
     // insertionSort
-    //List.LLinsertionSort();
+    List.LLinsertionSort();
 
     //print out sorted linked list
     cout << "Sorted Linked List: " << endl;
