@@ -179,50 +179,47 @@ void LinkList::LLinsertionSort() { //takes in head and along with it, the rest o
     current = head->next; //starting from the first element beyond head
     previous = head; //previous is one before current
 
+    while (end != nullptr) { //do until the whole list is sorted
+        // create node to track the next element in list
+        Node *next;
+        next = current->next;
 
+        //case 1: //two values next to each other that are already in correct order
+        if (next->value > current->value) {
 
-    while (end != nullptr) { //before the current reaches the end of the list
-        while (head) {
-            // create node to track the next element in list
-            Node *next;
-            next = current->next;
+            //move everything down the line in order
+            previous = previous->next;
+            current = next;
+            next = next->next;
+            end = end->next;
+        }
 
-            if (current->value > next->value) { //compare two values next to each other
-                current->next = next->next; //move currents pointer to one position over
+            //case 2: two values next to each other need to be rearranged
+        else { // the values are not in the correct order
 
-                Node *temp; // create node to temporarily store data while you find correct location
-                temp = next; // removing the out of place node from the list while saving its data
+            //case 2.1: the value is less than the head -- head needs to be reassigned
+            if (head->value > current->value) {
+                previous->next = next; //move link to skip over current
+                next = head; //the lower valued node points to the first position
+                head = current; //the old head becomes the current node;
+            }
 
-                next = current->next;
+                //case 2.2: the value needed to be changed is in the middle of the list
+            else {
+                end = head; //the list is not sorted
 
+                previous->next = current->next; //move link to skip over current
 
-            } else {
-                //move everything down the line in order
-                previous = previous->next;
-                current = current->next;
-                next = next->next;
-                end = end->next;
+                //move current to the first location that is not sorted
+                current->next = end->next;
+                end->next = current;
+
+                //check that the list is not sorted and the nodes are still in the correct order
+                while (end->next != nullptr && (end->next->value < current->value)) {
+                    end = end->next; //move end along because the list is sorted
+                }
             }
         }
+        current = previous->next; //update to new correct location
     }
-
-
-    /*for (int i = 0; i < length - 1; i++) {
-        for (int j = 0; j < length - i - 1; j++) {
-            if (previous->value > current->value) {
-                swap(previous->value, current->value);
-            }
-            current = current->next;
-        }
-    }
-
-    temp = head;
-    while (temp){
-        temp = temp->next;
-        head->next = temp->next;
-        temp->next = head;
-    }*/
-
-
 }
-
