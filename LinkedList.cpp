@@ -160,7 +160,8 @@ void LinkList::printList() const {
 void LinkList::LLinsertionSort() { //takes in head and along with it, the rest of the linked list
 
     Node *current; // create node for current position of the list
-    Node *previous; // create new node to  to track where you have been
+    Node *previous; // create node for previous position of the list
+    Node *end; //create node to track end of sorted part of the list
 
     //case 1: Empty List- there is nothing to sort
     if (head == nullptr) {
@@ -173,28 +174,55 @@ void LinkList::LLinsertionSort() { //takes in head and along with it, the rest o
     }
 
     //case 3: Linked List of multiple elements
-    int length = 0;
 
-    current = head; //starting from the top of the list
+    end = head->next; //list of one is sorted
+    current = head->next; //starting from the first element beyond head
+    previous = head; //previous is one before current
 
-    //traversing the list to determine its length
-    while (current) {
-        length++;
-        current = current->next;
+
+
+    while (end != nullptr) { //before the current reaches the end of the list
+        while (head) {
+            // create node to track the next element in list
+            Node *next;
+            next = current->next;
+
+            if (current->value > next->value) { //compare two values next to each other
+                current->next = next->next; //move currents pointer to one position over
+
+                Node *temp; // create node to temporarily store data while you find correct location
+                temp = next; // removing the out of place node from the list while saving its data
+
+                next = current->next;
+
+
+            } else {
+                //move everything down the line in order
+                previous = previous->next;
+                current = current->next;
+                next = next->next;
+                end = end->next;
+            }
+        }
     }
 
-    current = head->next; //starting from the first element beyond head
 
-    //sort the list
-    while (current) {
-        current = head; //start at the front of the list
-
-        for (int i = 0; i < length; i++)
+    /*for (int i = 0; i < length - 1; i++) {
+        for (int j = 0; j < length - i - 1; j++) {
             if (previous->value > current->value) {
                 swap(previous->value, current->value);
             }
-        current = current->next;
-
+            current = current->next;
+        }
     }
+
+    temp = head;
+    while (temp){
+        temp = temp->next;
+        head->next = temp->next;
+        temp->next = head;
+    }*/
+
+
 }
 
