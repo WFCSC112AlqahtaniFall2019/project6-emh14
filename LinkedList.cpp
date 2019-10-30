@@ -162,6 +162,40 @@ void LinkList::LLinsertionSort() { //takes in head and along with it, the rest o
 
     Node *current; // create node for current position of the list
     Node *previous; // create node for previous position of the list
+
+    Node *mockHead; // create new mock head node
+    mockHead->next = head; //Do not store data in the first node
+
+    current = mockHead->next->next;
+    previous = mockHead->next; //previous is set one before current
+
+    while (current != nullptr) {
+        Node *begin = mockHead; // create node to compare with first term
+
+        //loop that finds the location of the node
+        while (begin->next->value < current->value) {
+            begin = begin->next; //moving begin down the list
+        }
+
+        //checks if we should move the node or not
+        if (begin->next != current) {
+            previous->next = current->next; //move link to skip over current
+            current->next = begin->next; //link current to the beginning of the sorted part of the list
+            begin->next = current; //update how much of the list is sorted
+
+            current = previous->next; //correct the position of the current node
+        }
+            //they are the same
+        else {
+            previous = current; // move previous down the line
+            current = current->next; // move current down the line
+        }
+    }
+
+
+
+    /*Node *current; // create node for current position of the list
+    Node *previous; // create node for previous position of the list
     Node *end; //create node to track end of sorted part of the list
 
     //case 1: Empty List- there is nothing to sort
@@ -180,7 +214,7 @@ void LinkList::LLinsertionSort() { //takes in head and along with it, the rest o
     current = head->next; //starting from the first element beyond head
     previous = head; //previous is one before current
 
-    /*outer while loop*/while (end != nullptr) { //do until the whole list is sorted
+    *//*outer while loop*//*while (end != nullptr) { //do until the whole list is sorted
         // create node to track the next element in list
         Node *next;
         next = current->next;
@@ -214,11 +248,12 @@ void LinkList::LLinsertionSort() { //takes in head and along with it, the rest o
                 end->next = current;
 
                 //check that the list is not sorted and the nodes are still in the correct order
-                /*inner while loop*/while (end->next != nullptr && (end->next->value < current->value)) {
+                *//*inner while loop*//*while (end->next != nullptr && (end->next->value < current->value)) {
                     end = end->next; //move end along because the list is sorted
                 }
             }
         }
         current = previous->next; //update to new correct location
-    }
+    }*/
 }
+//Ticket Number: 479
