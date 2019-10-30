@@ -160,9 +160,7 @@ void LinkList::printList() const {
 void LinkList::LLinsertionSort() { //takes in head and along with it, the rest of the linked list
 
     Node *current; // create node for current position of the list
-    Node *temp; // create temporary node
     Node *previous; // create new node to  to track where you have been
-    Node *traverser; //create new node to find certain places in the list
 
     //case 1: Empty List- there is nothing to sort
     if (head == nullptr) {
@@ -175,10 +173,10 @@ void LinkList::LLinsertionSort() { //takes in head and along with it, the rest o
     }
 
     //case 3: Linked List of multiple elements
-    int i = 1; //variable marks the current position in the list
     int length = 0;
 
     current = head; //starting from the top of the list
+
     //traversing the list to determine its length
     while (current) {
         length++;
@@ -190,22 +188,13 @@ void LinkList::LLinsertionSort() { //takes in head and along with it, the rest o
     //sort the list
     while (current) {
         current = head; //start at the front of the list
-        temp = current;
 
-        current = head;
+        for (int i = 0; i < length; i++)
+            if (previous->value > current->value) {
+                swap(previous->value, current->value);
+            }
+        current = current->next;
 
-        for (int j = 0; j < i; j++) {
-
-            previous->next = current->next;
-            current->next = nullptr;
-        }
     }
-
-    current = temp;
-    //update position in the list
-    previous = current;
-    current = current->next;
-    i++;
 }
-
 
