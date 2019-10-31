@@ -1,6 +1,9 @@
-//
-// Created by Ethan Harrison on 10/24/19.
-//
+/* Ethan Harrison
+ * CSC 112
+ * Project 6
+ * Insertion Sort
+ * */
+
 
 #ifndef BINARYINSERTIONSORT_LINKEDLIST_H
 #define BINARYINSERTIONSORT_LINKEDLIST_H

@@ -1,3 +1,10 @@
+/* Ethan Harrison
+ * CSC 112
+ * Project 6
+ * Insertion Sort
+ * */
+
+
 #ifndef BINARYINSERTIONSORT_H
 #define BINARYINSERTIONSORT_H
 

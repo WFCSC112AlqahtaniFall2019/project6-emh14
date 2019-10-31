@@ -1,3 +1,10 @@
+/* Ethan Harrison
+ * CSC 112
+ * Project 6
+ * Insertion Sort
+ * */
+
+
 #include "BinaryInsertionSort.h"
 using namespace std;
 

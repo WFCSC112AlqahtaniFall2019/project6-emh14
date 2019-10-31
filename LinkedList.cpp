@@ -1,6 +1,9 @@
-//
-// Created by Ethan Harrison on 10/24/19.
-//
+/* Ethan Harrison
+ * CSC 112
+ * Project 6
+ * Insertion Sort
+ * */
+
 
 #include "LinkedList.h"
 #include <iostream>
