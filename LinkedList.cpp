@@ -170,18 +170,19 @@ void LinkList::LLinsertionSort() { //takes in head and along with it, the rest o
     previous = mockHead->next; //previous is set one before current
 
     while (current != nullptr) {
-        Node *begin = mockHead; // create node to compare with first term
+        Node *end; // create new node to track the end of the sorted part of thee list
+        end = mockHead; // end starts at the beginning because nothing has been checked
 
         //loop that finds the location of the node
-        while (begin->next->value < current->value) {
-            begin = begin->next; //moving begin down the list
+        while (end->next->value < current->value) {
+            end = end->next; //moving begin down the list
         }
 
         //checks if we should move the node or not
-        if (begin->next != current) {
+        if (end->next != current) {
             previous->next = current->next; //move link to skip over current
-            current->next = begin->next; //link current to the beginning of the sorted part of the list
-            begin->next = current; //update how much of the list is sorted
+            current->next = end->next; //link current to the ending of the sorted part of the list
+            end->next = current; //update how much of the list is sorted
 
             current = previous->next; //correct the position of the current node
         }
@@ -198,69 +199,3 @@ void LinkList::LLinsertionSort() { //takes in head and along with it, the rest o
     mockHead->next = nullptr;
     delete (mockHead);
 }
-
-
-
-/*Node *current; // create node for current position of the list
-Node *previous; // create node for previous position of the list
-Node *end; //create node to track end of sorted part of the list
-
-//case 1: Empty List- there is nothing to sort
-if (head == nullptr) {
-    return;
-}
-
-//case 2: Linked List of one element is already sorted
-if (head->next == nullptr) {
-    return;
-}
-
-//case 3: Linked List of multiple elements
-
-end = head->next; //list of one is sorted
-current = head->next; //starting from the first element beyond head
-previous = head; //previous is one before current
-
-*//*outer while loop*//*while (end != nullptr) { //do until the whole list is sorted
-        // create node to track the next element in list
-        Node *next;
-        next = current->next;
-
-        //case 1: //two values next to each other that are already in correct order
-        if (next->value > current->value) {
-
-            //move everything down the line in order
-            previous = previous->next;
-            current = next;
-        }
-
-        //case 2: two values next to each other need to be rearranged
-        else {
-
-            //case 2.1: the value is less than the head -- head needs to be reassigned
-            if (head->value > current->value) {
-                previous->next = next; //move link to skip over current
-                next = head; //the lower valued node points to the first position
-                head = current; //the old head becomes the current node;
-            }
-
-                //case 2.2: the value needed to be changed is in the middle of the list
-            else {
-                end = head; //the list is not sorted
-
-                previous->next = next; //move link to skip over current
-
-                //move current to the first location that is not sorted
-                next = end->next;
-                end->next = current;
-
-                //check that the list is not sorted and the nodes are still in the correct order
-                *//*inner while loop*//*while (end->next != nullptr && (end->next->value < current->value)) {
-                    end = end->next; //move end along because the list is sorted
-                }
-            }
-        }
-        current = previous->next; //update to new correct location
-    }*/
-
-//Ticket Number: 479
