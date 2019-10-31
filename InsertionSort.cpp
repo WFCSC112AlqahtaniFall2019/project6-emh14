@@ -27,11 +27,11 @@ int main() {
     }
 
     // print out unsorted vector
-    cout << "Unsorted Vector: " << endl;
+    /*cout << "Unsorted Vector: " << endl;
     for (int i = 0; i < v.size(); i++) {
         cout << v[i] << "\t";
     }
-    cout << endl;
+    cout << endl;*/
 
     // binary insertion sort
     insertionSort(v, v.size());
@@ -42,24 +42,42 @@ int main() {
     }
 
     // print out sorted vector
-    cout << "Sorted Vector: " << endl;
+    /*cout << "Sorted Vector: " << endl;
     for (int i = 0; i < v.size(); i++) {
         cout << v[i] << "\t";
     }
-    cout << endl;
+    cout << endl;*/
 
     // print out unsorted linked list
-    cout << "Unsorted Linked List: " << endl;
+    /*cout << "Unsorted Linked List: " << endl;
     List.printList();
-    cout << endl;
+    cout << endl;*/
 
     // insertionSort
     List.LLinsertionSort();
 
     //print out sorted linked list
-    cout << "Sorted Linked List: " << endl;
-    List.printList();
+    /*cout << "Sorted Linked List: " << endl;
+    List.printList();*/
 
-    //cout << "Here" << endl;
+    cout << endl << endl;
+
+    for (int i = 0; i < 10000; i = i+100) {
+        //measure vector sorting
+        clock_t start_vectorSort = clock(); //start clock
+        insertionSort(v, v.size()); // sort vector using Binary Insertion
+        clock_t end_vectorSort = clock(); //end clock
+        double elapsed_vectorSort =
+                double(end_vectorSort - start_vectorSort) / CLOCKS_PER_SEC; //calculate seconds passed
+
+        clock_t start_linkListSort = clock(); //start clock
+        //sort vector using LLinsertionSort
+        List.LLinsertionSort(); //measure linked list sorting
+        clock_t end_linkListSort = clock(); //end clock
+        double elapsed_linkListSort =
+                double(end_linkListSort - start_linkListSort) / CLOCKS_PER_SEC; //calculate seconds passed
+
+        cout << "Linked List Time: " << elapsed_linkListSort << "\t" << "Vector Time: " << elapsed_vectorSort << endl;
+    }
 
 }
