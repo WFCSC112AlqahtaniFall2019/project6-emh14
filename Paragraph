@@ -1,0 +1,17 @@
+/* Ethan Harrison
+ * CSC 112
+ * Project 6
+ * Insertion Sort
+ * */
+
+Vectors and linked lists are two different ways of storing a sequence of variables. In a vector, like an array,
+items are stored in contiguous locations in memory. While this makes it easy for random access, it makes it hard to
+delete and insert items. It is the opposite for linked lists. In a linked list all you need to do is swap pointers to
+add and remove, but in order to access individual items, you must traverse the entire list. Both implementations of
+insertionSort require two tasks: 1) find the correct position to place the item and 2) actually place that item.
+However, in vectors you can use a binary search function to return the location of where the item should be inserted.
+In linked lists, you must traverse the list one node at a time (the inner while loop) until you reach a point in the
+list where the values are in the incorrect order. This must happen for every out of place node. Therefore, even though
+the rearranging of the pointers is quick, as the size of a linked list gets longer it will take longer to find the
+correct location of each node.  This is why it makes sense for the vector sorting time to remain relatively the same
+as its size increased, while sorting a linked list took more time as more items were appended.
